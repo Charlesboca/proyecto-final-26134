@@ -3,9 +3,9 @@ import { collection, addDoc } from 'firebase/firestore';
 
 // Definimos un array de productos de ejemplo para poblar la base de datos
 const productosSeeders = [
-    {  nombre: "Pelota", precio: 100, stock: 10, descripcion: "Pelota numero 5 " },
-    {  nombre: "Botin", precio: 250, stock: 5, descripcion: "Botin de papi" },
-    {  nombre: "Medias", precio: 50, stock: 20, descripcion: "Medias que no cortan la piel" }
+    {  nombre: "Pelota", precio: 100, stock: 10, descripcion: "Pelota numero 5 ",fechaCreacion: new Date().toISOString() },
+    {  nombre: "Botin", precio: 250, stock: 5, descripcion: "Botin de papi",fechaCreacion: new Date().toISOString() },
+    {  nombre: "Medias", precio: 50, stock: 20, descripcion: "Medias que no cortan la piel",fechaCreacion: new Date().toISOString() }
 ]; 
 // Armamos la función para poblar la base de datos con los productos de ejemplo con seeders para hacerlo más rápido y fácil
 export const seedProductos = async () => {

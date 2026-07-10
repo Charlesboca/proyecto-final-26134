@@ -7,3 +7,6 @@ Iniciar sesión con un usuario creado en la sección Authentication de Firebase.
 Copiar el token que aparece en la consola (F12).
 
 Probar las rutas en Postman usando el tipo Bearer Token.
+
+
+para poder cargar datos se debe correr el seeder con node run-seeder.js ,eso carga los datos en firebase 
