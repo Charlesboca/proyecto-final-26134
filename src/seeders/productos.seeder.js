@@ -1,0 +1,25 @@
+import { db } from '../config/firebase.js';
+import { collection, addDoc } from 'firebase/firestore';
+
+// Definimos un array de productos de ejemplo para poblar la base de datos
+const productosSeeders = [
+    {  nombre: "Pelota", precio: 100, stock: 10, descripcion: "Pelota numero 5 " },
+    {  nombre: "Botin", precio: 250, stock: 5, descripcion: "Botin de papi" },
+    {  nombre: "Medias", precio: 50, stock: 20, descripcion: "Medias que no cortan la piel" }
+]; 
+// Armamos la función para poblar la base de datos con los productos de ejemplo con seeders para hacerlo más rápido y fácil
+export const seedProductos = async () => {
+    try {
+        // Definimos la colección de productos
+        const productosCollection = collection(db, 'productos');1
+        // Iteramos sobre el array de productos y los agregamos a la colección
+          for (const producto of productosSeeders) {
+            // tener cuidado con el tema del nombre 
+               await addDoc(productosCollection, producto);
+        }
+        
+        console.log("¡Base de datos poblada con éxito!");
+    } catch (error) {
+        console.error("Error al poblar la base de datos:", error);
+    }
+};
