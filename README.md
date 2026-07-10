@@ -4,7 +4,7 @@ Abrir login.html.example sacando el .example  en el navegador.este se encuentra 
 
 Iniciar sesión con un usuario creado en la sección Authentication de Firebase.
 
-Copiar el token que aparece en la consola (F12).
+Copiar el token que aparece en la consola (F12).  tomarlo de la consola TU TOKEN VÁLIDO PARA POSTMAN:
 
 Probar las rutas en Postman usando el tipo Bearer Token.
 

@@ -2,6 +2,9 @@ import { db } from '../config/firebase.js';
 import { collection, addDoc } from 'firebase/firestore';
 
 // Definimos un array de productos de ejemplo para poblar la base de datos
+/// para que ande bien la coleccion debe existir en firebase y tener el mismo nombre que
+// le pongo aca despues  si se puede borrar ese 
+// dato de mentira que pusea para poblar la base de datos y que no rompa la app
 const productosSeeders = [
     {  nombre: "Pelota", precio: 100, stock: 10, descripcion: "Pelota numero 5 ",fechaCreacion: new Date().toISOString() },
     {  nombre: "Botin", precio: 250, stock: 5, descripcion: "Botin de papi",fechaCreacion: new Date().toISOString() },
