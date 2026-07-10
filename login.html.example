@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Generador de Token de Prueba</h2>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+    // --- PEGAR ACA DATOS PARA PODER PROBAR CON FIREBASE ---
+		const firebaseConfig = {
+		  apiKey: "",
+		  authDomain: "",
+		  projectId: "",
+		  storageBucket: "",
+		  messagingSenderId: "",
+		  appId: ""
+		};
+		
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Función para loguear y mostrar el token
+    async function login() {
+      const email = prompt("Email:");
+      const pass = prompt("Password:");
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, pass);
+        const token = await userCredential.user.getIdToken();
+        console.log("TU TOKEN VÁLIDO PARA POSTMAN:");
+        console.log(token);
+        alert("¡Token generado! Míralo en la consola (F12)");
+      } catch (e) {
+        alert("Error: " + e.message);
+      }
+    }
+    window.login = login;
+  </script>
+  <button onclick="login()">Iniciar sesión y generar Token</button>
+</body>
+</html>
