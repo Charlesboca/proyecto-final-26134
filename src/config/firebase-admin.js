@@ -1,15 +1,25 @@
-// src/config/firebase-admin.js
-const admin = require('firebase-admin');
+import { initializeApp, cert } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
+import 'dotenv/config';
 
 
-admin.initializeApp({
-  credential: admin.credential.cert({
+
+console.log("Verificando variables de entorno:");
+console.log("PROJECT_ID:", process.env.FIREBASE_PROJECT_ID);
+console.log("CLIENT_EMAIL:", process.env.FIREBASE_CLIENT_EMAIL);
+
+
+// Inicializamos la app usando las funciones importadas
+const app = initializeApp({
+  credential: cert({
     projectId: process.env.FIREBASE_PROJECT_ID,
     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    // Es fundamental reemplazar los \n literales por saltos de línea reales ,por eso se pega en una sola linea y se reemplaza con el replace
     privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
   })
 });
 
+// Exportamos el servicio de auth directamente
+const auth = getAuth(app);
 
-module.exports = admin;
+
+export default auth;

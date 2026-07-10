@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Generador de Token de Prueba</h2>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+    // --- PEGA AQUÍ TU CONFIGURACIÓN ---
+	const firebaseConfig = {
+	  apiKey: "AIzaSyDXWdobl-hmEDTDuj2gctD4kG9yM2YsHI4",
+	  authDomain: "crud-nodejs-firebase-261-6d806.firebaseapp.com",
+	  projectId: "crud-nodejs-firebase-261-6d806",
+	  storageBucket: "crud-nodejs-firebase-261-6d806.firebasestorage.app",
+	  messagingSenderId: "278143295255",
+	  appId: "1:278143295255:web:a2e045938717f64e01e152"
+	};
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Función para loguear y mostrar el token
+    async function login() {
+      const email = prompt("Email:");
+      const pass = prompt("Password:");
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, pass);
+        const token = await userCredential.user.getIdToken();
+        console.log("TU TOKEN VÁLIDO PARA POSTMAN:");
+        console.log(token);
+        alert("¡Token generado! Míralo en la consola (F12)");
+      } catch (e) {
+        alert("Error: " + e.message);
+      }
+    }
+    window.login = login;
+  </script>
+  <button onclick="login()">Iniciar sesión y generar Token</button>
+</body>
+</html>
